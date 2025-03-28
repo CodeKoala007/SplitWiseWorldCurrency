@@ -1,148 +1,290 @@
-/* Basic Reset & Body */
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #4a90e2; /* A nice blue */
+    --secondary-color: #f5a623; /* Accent orange */
+    --danger-color: #d9534f;
+    --success-color: #5cb85c;
+    --light-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-color: #343a40;
+    --muted-color: #6c757d;
+    --border-color: #dee2e6;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
+
+    --border-radius: 6px;
+    --spacing-unit: 1rem; /* Approx 16px */
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html {
+    font-size: 16px; /* Base font size */
+}
+
 body {
-    font-family: sans-serif;
+    font-family: var(--font-secondary);
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-    padding: 20px;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    padding: calc(var(--spacing-unit) * 1.5);
+    display: flex; /* Use flex to center the app container */
+    justify-content: center;
+    min-height: 100vh;
 }
 
 h1, h2, h3 {
-    margin-bottom: 0.8em;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    margin-bottom: var(--spacing-unit);
+    color: var(--primary-color);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+    color: var(--primary-color); /* Make main title stand out */
+}
+
+h2 {
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: calc(var(--spacing-unit) * 0.5);
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--muted-color);
 }
 
 ul {
     list-style: none;
 }
 
-/* App Container - Flexbox */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* --- App Container --- */
 .app-container {
-    max-width: 900px;
-    margin: 20px auto;
+    width: 100%;
+    max-width: 850px; /* Slightly wider */
     display: flex;
-    flex-direction: column; /* Stack sections vertically */
-    gap: 25px; /* Space between sections */
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 2); /* More space between sections */
 }
 
-/* Card Style for Sections */
+/* --- Card Style --- */
 .card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: calc(var(--spacing-unit) * 1.5);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: box-shadow 0.3s ease;
 }
 
-/* Form Styling */
+.card:hover {
+     box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+/* --- Form Styling --- */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: calc(var(--spacing-unit) * 1.2);
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: calc(var(--spacing-unit) * 0.4);
+    font-weight: 500; /* Roboto medium */
+    font-size: 0.95rem;
+    color: var(--muted-color);
 }
 
 .form-group input[type="text"],
 .form-group input[type="number"],
 .form-group select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: calc(var(--spacing-unit) * 0.7);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-family: var(--font-secondary);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); /* Focus ring */
+}
+
+/* --- Buttons --- */
 button {
     display: inline-block;
-    background-color: #5cb85c;
+    background-color: var(--primary-color);
     color: #fff;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+    padding: calc(var(--spacing-unit) * 0.7) calc(var(--spacing-unit) * 1.2);
+    border-radius: var(--border-radius);
     cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.2s ease;
+    font-size: 1rem;
+    font-weight: 600; /* Poppins bold */
+    font-family: var(--font-primary);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 button:hover {
-    background-color: #4cae4c;
+    background-color: #3a7ac8; /* Darker blue */
 }
 
+button:active {
+    transform: scale(0.98); /* Slight press effect */
+}
+
+#add-friend-btn {
+    background-color: var(--secondary-color);
+}
+#add-friend-btn:hover {
+    background-color: #e0931f; /* Darker orange */
+}
+
+
 #clear-data-btn {
-    background-color: #d9534f;
-    margin-top: 15px;
+    background-color: var(--danger-color);
+    margin-top: var(--spacing-unit);
 }
 #clear-data-btn:hover {
      background-color: #c9302c;
 }
 
-
-/* Specific Section Layouts */
+/* --- Specific Section Layouts --- */
 .add-friend-form {
     border-top: 1px solid #eee;
-    margin-top: 20px;
-    padding-top: 20px;
+    margin-top: var(--spacing-unit);
+    padding-top: var(--spacing-unit);
 }
 
 .friends-display ul,
 .expenses-display ul,
 .balances-display ul {
-    margin-top: 10px;
+    margin-top: calc(var(--spacing-unit) * 0.8);
+    padding-left: 0; /* Remove default padding */
 }
 
 .friends-display li,
 .expenses-display li,
 .balances-display li {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    padding: 8px 12px;
-    margin-bottom: 5px;
-    border-radius: 3px;
-    display: flex; /* Use flex for list item content */
-    justify-content: space-between; /* Space out content */
+    background-color: #fdfdff; /* Slightly off-white */
+    border: 1px solid #f0f0f5;
+    padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 1);
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    transition: background-color 0.2s ease;
+    font-size: 0.95rem;
 }
+.friends-display li:hover,
+.expenses-display li:hover,
+.balances-display li:hover {
+    background-color: #f5f7fa;
+}
+
 
 .expenses-display li span {
-    margin-right: 10px; /* Space between elements in expense item */
+    margin-right: var(--spacing-unit);
 }
 .expenses-display li .expense-details {
-    font-size: 0.9em;
-    color: #555;
+    font-size: 0.85em;
+    color: var(--muted-color);
+    text-align: right;
+    flex-shrink: 0; /* Prevent details from shrinking too much */
+    margin-left: var(--spacing-unit); /* Ensure space from main description */
 }
 
 
-/* Checkbox Group Styling */
+/* --- Checkbox Group Styling --- */
 .checkbox-group {
-    display: flex; /* Arrange checkboxes horizontally */
-    flex-wrap: wrap; /* Allow wrapping */
-    gap: 15px; /* Space between checkboxes */
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--spacing-unit) * 1.2); /* More space */
+    padding: calc(var(--spacing-unit) * 0.5) 0; /* Add some padding */
 }
 
 .checkbox-group label {
     display: flex;
     align-items: center;
-    gap: 5px; /* Space between checkbox and label text */
-    font-weight: normal;
+    gap: calc(var(--spacing-unit) * 0.5);
+    font-weight: 400; /* Roboto regular */
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--text-color);
 }
 .checkbox-group input[type="checkbox"] {
-    width: auto; /* Override default width */
+    width: 1.1em; /* Slightly larger checkbox */
+    height: 1.1em;
+    cursor: pointer;
+    accent-color: var(--primary-color); /* Style the checkmark color */
 }
 
-/* Balance Styling */
+/* --- Balance Styling --- */
+.balances-display h3 {
+     margin-bottom: calc(var(--spacing-unit) * 0.5);
+}
+
+.balances-display li {
+    font-weight: 500; /* Roboto medium */
+    font-size: 1.05rem;
+}
+
 .balances-display li.positive {
-    color: green;
-    font-weight: bold;
+    color: #28a745; /* Slightly different green */
+    border-left: 4px solid #28a745;
 }
 
 .balances-display li.negative {
-    color: red;
-    font-weight: bold;
+    color: var(--danger-color);
+    border-left: 4px solid var(--danger-color);
+}
+
+/* --- Responsive Considerations (Simple Example) --- */
+@media (max-width: 600px) {
+    body {
+        padding: var(--spacing-unit);
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .card {
+        padding: var(--spacing-unit);
+    }
+    .expenses-display li {
+        flex-direction: column; /* Stack expense details below on small screens */
+        align-items: flex-start;
+    }
+     .expenses-display li .expense-details {
+        text-align: left;
+        margin-left: 0;
+        margin-top: calc(var(--spacing-unit) * 0.3);
+    }
 }
